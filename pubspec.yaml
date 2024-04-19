@@ -11,6 +11,10 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.6
   google_maps_flutter: ^2.6.0
+  location: ^6.0.1
+  google_places_flutter: ^2.0.8
+  google_maps_webservice: ^0.0.14
+  permission_handler: ^10.1.0 # 최신 버전을 확인하여 버전을 지정합니다.
 
 dev_dependencies:
   flutter_test:
