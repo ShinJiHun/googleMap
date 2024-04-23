@@ -1,16 +1,11 @@
 # google_map
 
-A new Flutter project.
+플러터로 구글 맵 연동하는 예제
 
-## Getting Started
+## 예제 시작
 
-This project is a starting point for a Flutter application.
+이 프로젝트는 플러터로 로또 앱에 적용될 기능을 따로 구현 해보기 위한 프로젝트 입니다.
+이 프로젝트로 구글 맵 연동이 완료 되면 실제 로또 어플에 적용 할 수 있도록 구성합니다. 
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+이 프로젝트를 필두로 카카오맵 / 네이버맵 / T맵을 연동하여 판매점 검색 시 사용자가 원하는 지도 API를 선택할 수 있도록 합니다.
