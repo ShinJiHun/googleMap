@@ -37,7 +37,7 @@ class _MapScreenState extends State<MapScreen> {
         initialCameraPosition: CameraPosition(
           target: _greenlandCenterPosition,
           zoom: 12,
-        ),*-
+        ),
         markers: _markers,
         myLocationEnabled: true,
         myLocationButtonEnabled: true,
