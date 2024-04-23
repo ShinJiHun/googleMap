@@ -13,7 +13,7 @@ class MapScreen extends StatefulWidget {
 class _MapScreenState extends State<MapScreen> {
   LatLng _greenlandCenterPosition = LatLng(37.5665, 126.9780);
   Set<Marker> _markers = {};
-  final Set<String> _storeTypes = {'convenience_store'};
+  final Set<String> _storeTypes = {'lotto'};
   Location _location = Location();
   GoogleMapController? _mapController;
 
@@ -37,7 +37,7 @@ class _MapScreenState extends State<MapScreen> {
         initialCameraPosition: CameraPosition(
           target: _greenlandCenterPosition,
           zoom: 12,
-        ),
+        ),*-
         markers: _markers,
         myLocationEnabled: true,
         myLocationButtonEnabled: true,
@@ -54,20 +54,30 @@ class _MapScreenState extends State<MapScreen> {
     try {
       LocationData currentLocation = await _location.getLocation();
 
+      _mapController?.animateCamera(CameraUpdate.newCameraPosition(
+        CameraPosition(
+          target: LatLng(currentLocation.latitude!, currentLocation.longitude!),
+          zoom: 15.0,
+        ),
+      ));
+
       final places.PlacesSearchResponse placesResponse =
-      await places.GoogleMapsPlaces(
+          await places.GoogleMapsPlaces(
         apiKey: "AIzaSyA8CylSYIoBRKgT1OdyIOa7iWEFSGoVVYs",
       ).searchNearbyWithRadius(
         places.Location(
           lat: currentLocation.latitude!,
           lng: currentLocation.longitude!,
         ),
-        1500,
-        keyword: "lotto",
+        30000,
+        keyword: _storeTypes.first,
       );
 
+      final Set<Marker> markers = {};
+
+      print("PlaceResponse : " + placesResponse.results.length.toString());
+
       if (placesResponse.results.isNotEmpty) {
-        final Set<Marker> markers = {};
         setState(() {
           placesResponse.results.forEach((result) {
             final Marker marker = Marker(
@@ -82,6 +92,8 @@ class _MapScreenState extends State<MapScreen> {
           });
           _markers = markers;
         });
+      } else {
+        print('No convenience stores found.');
       }
     } catch (e) {
       print('Could not get location: $e');
